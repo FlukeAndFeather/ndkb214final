@@ -8,9 +8,9 @@ qc_1_filtered_spaghetti <- qc_1_draft |>
   select("Sample_Date", "Ca") |> 
   filter(Sample_Date >= "1988-01-01" & Sample_Date <= "1994-12-31")
 
-qc_1_spaghetti
+qc_1_filtered_spaghetti
 
-qc_1_Ca <- qc_1_filtered_changed |> 
+qc_1_Ca <- qc_1_filtered_spaghetti |> 
   ggplot(
     mapping = aes(
         x = Sample_Date,
@@ -20,5 +20,4 @@ qc_1_Ca <- qc_1_filtered_changed |>
   geom_line()
 
 qc_1_Ca
-
 
