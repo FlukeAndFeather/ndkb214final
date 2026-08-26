@@ -19,6 +19,7 @@ for(i in 1:nrow(qc_1_tibble)){
   ca_mean <- mean(ca_window, na.rm = TRUE)
   qc_1_tibble$Ca_mgl[i] <- ca_mean
 }
+qc_1_tibble
 
 qc_ca <- qc_1_tibble |> 
   ggplot(
