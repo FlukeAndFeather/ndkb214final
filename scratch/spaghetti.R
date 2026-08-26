@@ -1,6 +1,8 @@
 library(tidyverse)
 qc1_draft <- read_csv("data/QuebradaCuenca1-Bisley.csv")
 
+source("R/moving-average.R")
+
 qc1_filtered <- qc1_draft |> 
   select("Sample_Date", "Ca") |> 
   filter(Sample_Date >= "1988-01-01" & Sample_Date <= "1994-12-31")
