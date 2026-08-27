@@ -1,0 +1,40 @@
+---
+title: "Hurricane Hugo effect on stream nutrient concentrations in Bisley, Puerto Rico"
+format: html
+---
+
+## Background
+This document covers how to recreate figure 3 from Schaefer et al. (2000) focused on the effect of Hurricane Hugo in Bisley, Puerto Rico. The nutrients in figure 3 contain: (a) potassium, (b) nitrate-N, (c) magnesium, (d) calcium and (e) ammonium-N. The figure 3 includes years 1988 to 1994.
+
+![](../images/figure_3.png)
+
+## Data
+```{r}
+library(tidyverse)
+
+bq1 <- read_csv("../data/QuebradaCuenca1-Bisley.csv")
+
+bq2 <- read_csv("../data/QuebradaCuenca2-Bisley.csv")
+
+bq3 <- read_csv("../data/QuebradaCuenca3-Bisley.csv")
+
+rio_mameyes <- read_csv("../data/RioMameyesPuenteRoto.csv")
+```
+
+## Methods
+
+```{r}
+source("../R/moving-average.R")
+
+bq1_moving_avg <- moving_average(bq1, 9)
+
+bq2_moving_avg <- moving_average(bq2, 9)
+
+bq3_moving_avg <- moving_average(bq3, 9)
+
+```
+
+## Results
+```{r}
+
+```
