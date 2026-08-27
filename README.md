@@ -12,7 +12,10 @@
 ## Description of Repo Contents
 
 * **data folder**: 5 data sets (LUQ LTER MDLs, QuebradaCuenca1, QuebradaCuenca2, QuebradaCuenca3, and RioMameyesPuenteRoto).
+* **docs folder**: contains the html file used for creating a webpage in GitHub Pages. the html file is the same as the quarto markdown file in the paper folder.
 * **images folder**: figure 3 from Schaefer et al. (2000).
+* **paper folder**: this folder contains a quarto markdown file that visualizes the cleaned data from 1_clean_data.R. it produces our recreation of figure 3 from Schaefer et al. (2000)
+* **R folder**: this folder contains the code that creates the function moing_average() that allows us to clean the raw data.
 * **scratch folder**: rough draft code to recreate figure 3.
 
 ## Data Access
