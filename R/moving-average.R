@@ -7,7 +7,8 @@ moving_average <- function(df, num_weeks) {
     mg_mgl = NA,
     ca_mgl = NA,
     nh4_ugl = NA,
-    no3_ugl = NA
+    no3_ugl = NA,
+    Sample_ID = df$Sample_ID[1]
     # Fill in the rest of the ions
   )
 
