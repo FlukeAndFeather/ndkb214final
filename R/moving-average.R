@@ -34,13 +34,14 @@ moving_average <- function(df, num_weeks) {
     # The line above gets potassium in the window. Get the rest of the ions too
 
     # Calculate the mean of each ion concentration and fill in the result
-    result$k_mgl[i] <- mean(k_window)
-    result$mg_mgl[i] <- mean(mg_window)
-    result$ca_mgl[i] <- mean(ca_window)
-    result$nh4_mgl[i] <- mean(nh4_window)
-    result$no3_mgl[i] <- mean(no3_window)
+    result$k_mgl[i] <- mean(k_window, na.rm = TRUE)
+    result$mg_mgl[i] <- mean(mg_window, na.rm = TRUE)
+    result$ca_mgl[i] <- mean(ca_window, na.rm = TRUE)
+    result$nh4_ugl[i] <- mean(nh4_window, na.rm = TRUE)
+    result$no3_ugl[i] <- mean(no3_window, na.rm = TRUE)
   }
   
   # Return the result
+  print("at the end")
   return(result)
 }
