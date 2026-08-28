@@ -2,7 +2,11 @@
 moving_average <- function(df, num_weeks) {
   # Initialize a tibble to contain the results
   result <- tibble(
-    window_start = seq(ymd(df$Sample_Date[1]), ymd(df$Sample_Date[nrow(df)]), by = paste(num_weeks, "weeks")),
+    window_start = seq(
+      ymd(df$Sample_Date[1]),
+      ymd(df$Sample_Date[nrow(df)]),
+      by = paste(num_weeks, "weeks")
+    ),
     k_mgl = NA,
     mg_mgl = NA,
     ca_mgl = NA,
@@ -41,7 +45,7 @@ moving_average <- function(df, num_weeks) {
     result$nh4_ugl[i] <- mean(nh4_window, na.rm = TRUE)
     result$no3_ugl[i] <- mean(no3_window, na.rm = TRUE)
   }
-  
+
   # Return the result
   print("at the end")
   return(result)
