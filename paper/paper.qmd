@@ -18,7 +18,7 @@ Contributors:
 The figure recreation is based off of figure 3 from Schaefer et al. (2000) that illustrates the moving-average trends in streamwater ion concentrations before and after Hurricane Hugo in 1989-09-18. The analysis incorporates data from four sampling locations: BQ1, BQ2, BQ3, and Rio Mameyes. The ions examined in Figure 3 include (a) potassium (K), (b) nitrate-N (NO₃-N), (c) magnesium (Mg), (d) calcium (Ca), and (e) ammonium-N (NH₄-N). 
 
 <center>
-![](../figures/figure_3.png)
+![](/figure_3.png)
 <center>
 
 ## Data

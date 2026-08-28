@@ -14,13 +14,16 @@ figure3_recreation <- binded_long_output |>
   geom_line() +
   theme_linedraw() +
   theme_bw() +
-  theme(legend.position = "right") +
-  theme(strip.placement = "outside") +
+  theme(
+    strip.placement = "outside",
+    legend.position = "right"
+  ) +
   facet_grid(vars(binded_long_output$ions), scales = "free", switch = "y") +
   labs(
     x = "Ions",
     y = "Years",
     title = "Hurricane Hugo Effects on Stream Chemistry in Bisley, Puerto Rico"
   )
+
 
 figure3_recreation

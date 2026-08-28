@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Hurricane Hugo effect on stream chemistry in Bisley, Puerto Rico</title>
+<title>readme</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -29,17 +29,17 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="paper_files/libs/clipboard/clipboard.min.js"></script>
-<script src="paper_files/libs/quarto-html/quarto.js" type="module"></script>
-<script src="paper_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="paper_files/libs/quarto-html/popper.min.js"></script>
-<script src="paper_files/libs/quarto-html/tippy.umd.min.js"></script>
-<script src="paper_files/libs/quarto-html/anchor.min.js"></script>
-<link href="paper_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="paper_files/libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="paper_files/libs/bootstrap/bootstrap.min.js"></script>
-<link href="paper_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="paper_files/libs/bootstrap/bootstrap-215b371544c282197b31c8aa00ce3677.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="README_files/libs/clipboard/clipboard.min.js"></script>
+<script src="README_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="README_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="README_files/libs/quarto-html/popper.min.js"></script>
+<script src="README_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="README_files/libs/quarto-html/anchor.min.js"></script>
+<link href="README_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="README_files/libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="README_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="README_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="README_files/libs/bootstrap/bootstrap-215b371544c282197b31c8aa00ce3677.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
 
 </head>
@@ -50,54 +50,47 @@ ul.task-list li input[type="checkbox"] {
 
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Hurricane Hugo effect on stream chemistry in Bisley, Puerto Rico</h1>
-</div>
 
 
 
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<p>Author: Nina Berry https://github.com/nberry18</p>
-<p>Contributors: * Calvin Fu: https://github.com/cuvlin * Elyse Owen: https://github.com/eowen19</p>
-<section id="background" class="level2">
-<h2 class="anchored" data-anchor-id="background">Background</h2>
-<p>The figure recreation is based off of figure 3 from Schaefer et al.&nbsp;(2000) that illustrates the moving-average trends in streamwater ion concentrations before and after Hurricane Hugo in 1989-09-18. The analysis incorporates data from four sampling locations: BQ1, BQ2, BQ3, and Rio Mameyes. The ions examined in Figure 3 include (a) potassium (K), (b) nitrate-N (NO₃-N), (c) magnesium (Mg), (d) calcium (Ca), and (e) ammonium-N (NH₄-N).</p>
+<section id="hurricane-hugo-effect-on-stream-nutrient-concentrations-in-bisley-puerto-rico" class="level1">
+<h1>Hurricane Hugo effect on stream nutrient concentrations in Bisley, Puerto Rico</h1>
+<section id="repo-purpose" class="level2">
+<h2 class="anchored" data-anchor-id="repo-purpose">Repo Purpose</h2>
+<p>The purpose of the ndkb214final repository is to reproduce Figure 3 from Schaefer et al.&nbsp;(2000), which shows the moving-average trends in streamwater ion concentrations before and after Hurricane Hugo (1989). The analysis incorporates data from four sampling locations: BQ1, BQ2, BQ3, and Rio Mameyes. The ions examined in Figure 3 include (a) potassium (K), (b) nitrate-N (NO₃-N), (c) magnesium (Mg), (d) calcium (Ca), and (e) ammonium-N (NH₄-N). The repository contains the data processing, analysis, and visualization workflows required to recreate these figures and evaluate changes in nutrient dynamics associated with Hurricane Hugo.</p>
 <center>
-<img src="./figure_3.png" class="img-fluid">
+<img src="paper/figure_3.png" class="img-fluid">
 <center>
 </center></center></section>
-<section id="data" class="level2">
-<h2 class="anchored" data-anchor-id="data">Data</h2>
-<p>The data sets are downloaded from: McDowell, W. and International Institute of Tropical Forestry(IITF), USDA Forest Service.. 2024. Chemistry of stream water from the Luquillo Mountains ver 4923064. Environmental Data Initiative. https://doi.org/10.6073/pasta/f31349bebdc304f758718f4798d25458 (Accessed 2026-08-25).</p>
+<section id="description-of-repo-contents" class="level2">
+<h2 class="anchored" data-anchor-id="description-of-repo-contents">Description of Repo Contents</h2>
+<ul>
+<li><strong>data folder</strong>: 5 data sets of the different Sample_IDs (LUQ LTER MDLs (not needed), QuebradaCuenca1 (BQ1), QuebradaCuenca2 (BQ2), QuebradaCuenca3 (BQ3), and RioMameyesPuenteRoto (Rio_Mam)).</li>
+<li><strong>docs folder</strong>: Contains the html file used for creating a webpage in GitHub Pages. The html file is the same as the quarto markdown file in the paper folder.</li>
+<li><strong>figures</strong>: Figure 3 from Schaefer et al.&nbsp;(2000) and recreated figure 3.</li>
+<li><strong>output</strong>: Binded_table is the combined Sample_ID data frames and binded_long is the reorganized table with the columns: window_start, Sample_ID, ions, and window_mean. This table is used to recreate figure 3.</li>
+<li><strong>paper folder</strong>: This folder contains a quarto markdown file that visualizes and breaksdown the cleaned data from 1_clean_data.R. It produces our recreation of figure 3 from Schaefer et al.&nbsp;(2000)</li>
+<li><strong>R folder</strong>: This folder contains the code that creates the function moving_average() that allows us to clean the raw data and produce the moving_average of each of the ions.</li>
+<li><strong>scratch folder</strong>: Rough draft code to recreate figure 3.</li>
+<li><strong>1_clean_data.R</strong>: R markdown file that is the cleaned up raw data that incorporates the moving_average() function that produced the bined_long table.</li>
+</ul>
 </section>
-<section id="methods" class="level2">
-<h2 class="anchored" data-anchor-id="methods">Methods</h2>
-<p>This analysis reads in the 4 data frames of each Sample_ID, and applies the moving_average() function I created to calculate the mean concentrations of the ions every 9 weeks from 1988 to 1994. The recreated figure 3 is located in the output file.</p>
+<section id="data-access" class="level2">
+<h2 class="anchored" data-anchor-id="data-access">Data Access</h2>
+<ul>
+<li><p>Data folder contents was downloaded from: McDowell, W. and International Institute of Tropical Forestry(IITF), USDA Forest Service.. 2024. Chemistry of stream water from the Luquillo Mountains ver 4923064. Environmental Data Initiative. https://doi.org/10.6073/pasta/f31349bebdc304f758718f4798d25458 (Accessed 2026-08-25)</p></li>
+<li><p>Data files downloaded: ** QuebradaCuenca1-Bisley.csv ** QuebradaCuenca2-Bisley.csv ** QuebradaCuenca3-Bisley.csv ** RioMameyesPuenteRoto.csv</p></li>
+</ul>
 </section>
-<section id="results" class="level2">
-<h2 class="anchored" data-anchor-id="results">Results</h2>
-<p>The graph illustrates the ion concentrations (potassium, nitrate-N, magnesium, calcium and ammonium-N) in Bisley, Puerto Rico streams before and after Hurricane Hugo with a 9 week moving averages.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="paper_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
+<section id="authors-and-current-contributors" class="level2">
+<h2 class="anchored" data-anchor-id="authors-and-current-contributors">Authors and current contributors</h2>
+<p>Nina Berry: https://github.com/nberry18 Calvin Fu: https://github.com/cuvlin Elyse Owen: https://github.com/eowen19</p>
+</section>
+</section>
+<section id="references" class="level1">
+<h1>References</h1>
+<p>McDowell, William H., and USDA Forest Service. International Institute Of Tropical Forestry (IITF). 2024. “Chemistry of Stream Water from the Luquillo Mountains.” Environmental Data Initiative. https://doi.org/10.6073/PASTA/F31349BEBDC304F758718F4798D25458.</p>
+<p>Schaefer, Douglas. A., William H. McDowell, Fredrick N. Scatena, and Clyde E. Asbury. 2000. “Effects of Hurricane Disturbance on Stream Water Concentrations and Fluxes in Eight Tropical Forest Watersheds of the Luquillo Experimental Forest, Puerto Rico.” Journal of Tropical Ecology 16 (2): 189–207. https://doi.org/10.1017/s0266467400001358.</p>
 </section>
 
 </main>

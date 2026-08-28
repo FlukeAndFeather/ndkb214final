@@ -5,17 +5,18 @@
 The purpose of the ndkb214final repository is to reproduce Figure 3 from Schaefer et al. (2000), which shows the moving-average trends in streamwater ion concentrations before and after Hurricane Hugo (1989). The analysis incorporates data from four sampling locations: BQ1, BQ2, BQ3, and Rio Mameyes. The ions examined in Figure 3 include (a) potassium (K), (b) nitrate-N (NO₃-N), (c) magnesium (Mg), (d) calcium (Ca), and (e) ammonium-N (NH₄-N). The repository contains the data processing, analysis, and visualization workflows required to recreate these figures and evaluate changes in nutrient dynamics associated with Hurricane Hugo.
 
 <center>
-![](figures/figure_3.png)
+![](paper/figure_3.png)
 <center>
 
 ## Description of Repo Contents
 
 * **data folder**: 5 data sets of the different Sample_IDs (LUQ LTER MDLs (not needed), QuebradaCuenca1 (BQ1), QuebradaCuenca2 (BQ2), QuebradaCuenca3 (BQ3), and RioMameyesPuenteRoto (Rio_Mam)).
 * **docs folder**: Contains the html file used for creating a webpage in GitHub Pages. The html file is the same as the quarto markdown file in the paper folder.
-* **figures**: Figure 3 from Schaefer et al. (2000) and recreated figure 3.
+* **figure recreation**: Recreated figure 3.
 * **output**: Binded_table is the combined Sample_ID data frames and binded_long is the reorganized table with the columns: window_start, Sample_ID, ions, and window_mean. This table is used to recreate figure 3. 
 * **paper folder**: This folder contains a quarto markdown file that visualizes and breaksdown the cleaned data from 1_clean_data.R. It produces our recreation of figure 3 from Schaefer et al. (2000)
 * **R folder**: This folder contains the code that creates the function moving_average() that allows us to clean the raw data and produce the moving_average of each of the ions. 
+* **README_files**: ignore this folder, these files help my README run.
 * **scratch folder**: Rough draft code to recreate figure 3.
 * **1_clean_data.R**: R markdown file that is the cleaned up raw data that incorporates the moving_average() function that produced the bined_long table. 
 
