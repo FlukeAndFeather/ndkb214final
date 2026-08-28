@@ -1,33 +1,35 @@
 library(tidyverse)
 
-# Read in data sets (BQ1, BQ2, BQ3, Rio_Mam)
+# Read in data sets of each Sample_ID (BQ1, BQ2, BQ3, Rio_Mam)
 
 BQ1 <- read_csv("data/QuebradaCuenca1-Bisley.csv")
 BQ2 <- read_csv("data/QuebradaCuenca2-Bisley.csv")
 BQ3 <- read_csv("data/QuebradaCuenca3-Bisley.csv")
 Rio_Mam <- read_csv("data/RioMameyesPuenteRoto.csv")
 
-# Moving average function
+# Moving average function (refactor scratch folder code into a function that
+# anaylzes and processes each dataset)
 
 source("R/moving-average.R")
 
-# Data sets filtered dates and columns selected ("Sample_ID","Sample_Date", "Ca", "Mg", "K", "NH4-N", "NO3-N")
+# Filtered dates to the timeframe of 1988 to 1994 and only necessary
+# columns selected to match figure 3 ("Sample_ID","Sample_Date", "Ca", "Mg", "K", "NH4-N", "NO3-N")
 
-bq1_filtered <- BQ1 |> 
-select("Sample_ID","Sample_Date", "Ca", "Mg", "K", "NH4-N", "NO3-N") |> 
-filter(Sample_Date >= "1988-01-01" & Sample_Date <= "1994-12-31")
+bq1_filtered <- BQ1 |>
+  select("Sample_ID", "Sample_Date", "Ca", "Mg", "K", "NH4-N", "NO3-N") |>
+  filter(Sample_Date >= "1988-01-01" & Sample_Date <= "1994-12-31")
 
-bq2_filtered <- BQ2 |> 
-select("Sample_ID", "Sample_Date", "Ca", "Mg", "K", "NH4-N", "NO3-N") |> 
-filter(Sample_Date >= "1988-01-01" & Sample_Date <= "1994-12-31")
+bq2_filtered <- BQ2 |>
+  select("Sample_ID", "Sample_Date", "Ca", "Mg", "K", "NH4-N", "NO3-N") |>
+  filter(Sample_Date >= "1988-01-01" & Sample_Date <= "1994-12-31")
 
-bq3_filtered <- BQ3 |> 
-  select("Sample_ID", "Sample_Date", "Ca", "Mg", "K", "NH4-N", "NO3-N") |> 
-filter(Sample_Date >= "1988-01-01" & Sample_Date <= "1994-12-31")
+bq3_filtered <- BQ3 |>
+  select("Sample_ID", "Sample_Date", "Ca", "Mg", "K", "NH4-N", "NO3-N") |>
+  filter(Sample_Date >= "1988-01-01" & Sample_Date <= "1994-12-31")
 
-Rio_Mam_filtered <- Rio_Mam |> 
-  select("Sample_ID", "Sample_Date", "Ca", "Mg", "K", "NH4-N", "NO3-N") |> 
-filter(Sample_Date >= "1988-01-01" & Sample_Date <= "1994-12-31")
+Rio_Mam_filtered <- Rio_Mam |>
+  select("Sample_ID", "Sample_Date", "Ca", "Mg", "K", "NH4-N", "NO3-N") |>
+  filter(Sample_Date >= "1988-01-01" & Sample_Date <= "1994-12-31")
 
 # Moving average function applied to filtered data sets
 
@@ -41,11 +43,16 @@ Rio_Mam_moving_average <- moving_average(Rio_Mam_filtered, 9)
 
 # Binded rows of all moving average data sets
 
-binded_table <- bind_rows(bq1_movingaverage, bq2_movingaverage, bq3_movingaverage, Rio_Mam_moving_average)
+binded_table <- bind_rows(
+  bq1_movingaverage,
+  bq2_movingaverage,
+  bq3_movingaverage,
+  Rio_Mam_moving_average
+)
 
 # Pivot longer to format the data table for plot
 
-binded_long <- binded_table |> 
+binded_long <- binded_table |>
   pivot_longer(
     cols = c(
       'k_mgl',
@@ -56,21 +63,21 @@ binded_long <- binded_table |>
     ),
     names_to = "ions",
     values_to = "window_mean"
-  ) |> 
+  ) |>
   mutate(
     ions = factor(
       ions,
       levels = c(
-      'k_mgl',
-      'mg_mgl',
-      'ca_mgl',
-      'nh4_ugl',
-      'no3_ugl'
+        'k_mgl',
+        'mg_mgl',
+        'ca_mgl',
+        'nh4_ugl',
+        'no3_ugl'
       )
     )
   )
 
 # Output (csv files created and put in output folder)
 
-write_csv(binded_table, "output/binded_table.csv")
-write_csv(binded_long,"output/bined_long.csv")
+write_csv(binded_table, "output/binded_table.csv") # This is the binded table of all Sample_IDs together.
+write_csv(binded_long, "output/bined_long.csv") # This is used to create figure 3.
