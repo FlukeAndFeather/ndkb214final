@@ -43,6 +43,34 @@ Rio_Mam_moving_average <- moving_average(Rio_Mam_filtered, 9)
 
 binded_table <- bind_rows(bq1_movingaverage, bq2_movingaverage, bq3_movingaverage, Rio_Mam_moving_average)
 
-# Output (csv file created and find binded_table in output folder)
+# Pivot longer to format the data table for plot
+
+binded_long <- binded_table |> 
+  pivot_longer(
+    cols = c(
+      'k_mgl',
+      'mg_mgl',
+      'ca_mgl',
+      'nh4_ugl',
+      'no3_ugl'
+    ),
+    names_to = "ions",
+    values_to = "window_mean"
+  ) |> 
+  mutate(
+    ions = factor(
+      ions,
+      levels = c(
+      'k_mgl',
+      'mg_mgl',
+      'ca_mgl',
+      'nh4_ugl',
+      'no3_ugl'
+      )
+    )
+  )
+
+# Output (csv files created and put in output folder)
 
 write_csv(binded_table, "output/binded_table.csv")
+write_csv(binded_long,"output/bined_long.csv")
