@@ -8,16 +8,17 @@ figure3_recreation <- binded_long_output |>
       x = window_start,
       y = window_mean,
       group = Sample_ID,
-      linetype = Sample_ID
+      linetype = Sample_ID,
     )
   ) +
   geom_line() +
   theme_linedraw() +
+  theme_bw() +
   theme(legend.position = "right") +
   facet_grid(vars(binded_long_output$ions), scales = "free", switch = "y") +
   ylab("Ions") +
   xlab("Years") +
-  labs(title = "Hurricane Hugo Effects on Stream Chemistry in Bisley, Puerto Rico", linetype = "") 
+  labs(title = "Hurricane Hugo Effects on Stream Chemistry in Bisley, Puerto Rico") 
    
 
 figure3_recreation
