@@ -1,40 +1,50 @@
 ---
-title: "Hurricane Hugo effect on stream nutrient concentrations in Bisley, Puerto Rico"
+title: "Hurricane Hugo effect on stream chemistry in Bisley, Puerto Rico"
 format: html
 ---
 
 ## Background
-This document covers how to recreate figure 3 from Schaefer et al. (2000) focused on the effect of Hurricane Hugo in Bisley, Puerto Rico. The nutrients in figure 3 contain: (a) potassium, (b) nitrate-N, (c) magnesium, (d) calcium and (e) ammonium-N. The figure 3 includes years 1988 to 1994.
 
-![](../images/figure_3.png)
+The figure recreation is based off of figure 3 from Schaefer et al. (2000) that illustrates the moving-average trends in streamwater ion concentrations before and after Hurricane Hugo in 1989-09-18. The analysis incorporates data from four sampling locations: BQ1, BQ2, BQ3, and Rio Mameyes. The ions examined in Figure 3 include (a) potassium (K), (b) nitrate-N (NO₃-N), (c) magnesium (Mg), (d) calcium (Ca), and (e) ammonium-N (NH₄-N). 
+
+<center>
+![](../figures/figure_3.png)
+<center>
 
 ## Data
-```{r}
-library(tidyverse)
 
-bq1 <- read_csv("../data/QuebradaCuenca1-Bisley.csv")
-
-bq2 <- read_csv("../data/QuebradaCuenca2-Bisley.csv")
-
-bq3 <- read_csv("../data/QuebradaCuenca3-Bisley.csv")
-
-rio_mameyes <- read_csv("../data/RioMameyesPuenteRoto.csv")
-```
+The data sets are downloaded from: McDowell, W. and International Institute of Tropical Forestry(IITF), USDA Forest Service.. 2024. Chemistry of stream water from the Luquillo Mountains ver 4923064. Environmental Data Initiative. https://doi.org/10.6073/pasta/f31349bebdc304f758718f4798d25458 (Accessed 2026-08-25).
 
 ## Methods
 
-```{r}
-source("../R/moving-average.R")
-
-bq1_moving_avg <- moving_average(bq1, 9)
-
-bq2_moving_avg <- moving_average(bq2, 9)
-
-bq3_moving_avg <- moving_average(bq3, 9)
-
-```
+This analysis reads in the 4 data frames of each Sample_ID, and applies the moving_average() function I created to calculate the mean concentrations of the ions every 9 weeks from 1988 to 1994. The recreated figure 3 is located in the output file. 
 
 ## Results
 ```{r}
+library(tidyverse)
 
+binded_long_output <- read_csv("../output/bined_long.csv")
+
+figure3_recreation <- binded_long_output |>
+  ggplot(
+    mapping = aes(
+      x = window_start,
+      y = window_mean,
+      group = Sample_ID,
+      linetype = Sample_ID,
+    )
+  ) +
+  geom_line() +
+  theme_linedraw() +
+  theme_bw() +
+  theme(legend.position = "right") +
+  theme(strip.placement = "outside") +
+  facet_grid(vars(binded_long_output$ions), scales = "free", switch = "y") +
+  labs(
+    x = "Ions",
+    y = "Years",
+    title = "Hurricane Hugo Effects on Stream Chemistry in Bisley, Puerto Rico"
+  )
+
+figure3_recreation
 ```
