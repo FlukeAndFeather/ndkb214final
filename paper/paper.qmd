@@ -1,7 +1,17 @@
 ---
 title: "Hurricane Hugo effect on stream chemistry in Bisley, Puerto Rico"
 format: html
+execute:
+  echo: false
+  warning: false
+  message: false
 ---
+Author: Nina Berry https://github.com/nberry18
+
+Contributors: 
+* Calvin Fu: https://github.com/cuvlin 
+* Elyse Owen: https://github.com/eowen19 
+
 
 ## Background
 
@@ -20,10 +30,15 @@ The data sets are downloaded from: McDowell, W. and International Institute of T
 This analysis reads in the 4 data frames of each Sample_ID, and applies the moving_average() function I created to calculate the mean concentrations of the ions every 9 weeks from 1988 to 1994. The recreated figure 3 is located in the output file. 
 
 ## Results
+
+The graph illustrates the ion concentrations (potassium, nitrate-N, magnesium, calcium and ammonium-N) in Bisley, Puerto Rico streams before and after Hurricane Hugo with a 9 week moving averages. 
+
 ```{r}
 library(tidyverse)
 
 binded_long_output <- read_csv("../output/bined_long.csv")
+
+hugo_date <- ymd("1989-09-18")
 
 figure3_recreation <- binded_long_output |>
   ggplot(
